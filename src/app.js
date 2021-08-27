@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 // require('express-async-errors');
 
-// I'm using require to remove morgan warning error when using import and esm
+// I'm using "require" to remove morgan warning error when using import and esm
 const morgan = require('morgan');
 
 const app = express();
