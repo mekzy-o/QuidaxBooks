@@ -7,8 +7,8 @@ export const getFeaturedBooks = async ({ limit, offset }) => {
   return books;
 };
 
-export const getSingleBook = async (id) => {
-  const book = await db.Book.findAll({ where: { id } });
+export const getSingleBook = async (slug) => {
+  const book = await db.Book.findAll({ where: { slug } });
   return book;
 };
 

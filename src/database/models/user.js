@@ -15,6 +15,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     {},
   );
-  User.associate = (models) => {};
+  User.associate = (models) => {
+    User.hasMany(models.Rate, {
+      foreignKey: 'userId',
+      as: 'userRating',
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE',
+    });
+  };
   return User;
 };

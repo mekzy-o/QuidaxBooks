@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: DataTypes.INTEGER,
+        type: DataTypes.UUID,
       },
       title: {
         allowNull: false,
@@ -66,6 +66,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {},
   );
-  Book.associate = (models) => {};
+  Book.associate = (models) => {
+    Book.hasMany(models.Rate, { foreignKey: 'bookSlug', as: 'bookRatings' });
+  };
   return Book;
 };

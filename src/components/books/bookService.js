@@ -10,8 +10,8 @@ export const getFeaturedBooksService = async (page, size) => {
   return resultWithTotalCount;
 };
 
-export const getSingleBookDetailService = async (id) => {
-  const bookDetail = await Book.getSingleBook(id);
+export const getSingleBookDetailService = async (slug) => {
+  const bookDetail = await Book.getSingleBook(slug);
   return bookDetail;
 };
 
