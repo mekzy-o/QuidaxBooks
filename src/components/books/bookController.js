@@ -4,6 +4,13 @@ import { getFeaturedBooksService, getSingleBookDetailService, customSearchBooksS
 
 export const getFeaturedBooks = async (req, res, next) => {
   const { page, size } = req.query;
+  if (!req.session.userId) {
+    return Response.errorResponse(
+      res,
+      400,
+      'Please make sure you are logged in to view books',
+    );
+  }
   try {
     const data = await getFeaturedBooksService(page, size);
     return Response.successResponse(
@@ -31,13 +38,15 @@ export const getSingleBookDetail = async (req, res, next) => {
 };
 
 export const searchBooks = async (req, res, next) => {
-  const { query, filter } = req.query;
+  const {
+    query, filter, page, size,
+  } = req.query;
   try {
-    const data = await customSearchBooksService(query, filter);
+    const data = await customSearchBooksService(query, filter, page, size);
     return Response.successResponse(
       res,
       'Books fetched successfully',
-      data,
+      !data.length ? 'No search result found' : data,
     );
   } catch (error) {
     return next(error);

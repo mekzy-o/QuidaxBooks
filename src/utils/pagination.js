@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable import/prefer-default-export */
 // eslint-disable-next-line import/prefer-default-export
 
@@ -8,8 +9,8 @@
   * @param {*} size page size
   * @returns {object} pagination object containing limit and offset
   */
-export const getPagination = (page, size) => {
-  const limit = size ? +size : 15;
+export const getPagination = (page, size, searchField = false) => {
+  const limit = size ? +size : +searchField ? 10 : 15;
   const offset = page ? (page - 1) * limit : 0;
 
   return { limit, offset };

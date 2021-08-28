@@ -8,57 +8,23 @@ export const getFeaturedBooks = async ({ limit, offset }) => {
 };
 
 export const getSingleBook = async (id) => {
-  const book = await db.Book.findOne({ where: { id } });
+  const book = await db.Book.findAll({ where: { id } });
   return book;
 };
 
-export const searchBookByAuthor = async (keyword) => {
-  const books = await db.Book.findAll({
+export const searchBookByFilter = async (keyword, filter, limit, offset) => {
+  const books = await db.Book.findAndCountAll({
     where: {
       [Op.or]: [
         {
-          author: {
+          [filter]: {
             [Op.iLike]: `%${keyword}%`,
           },
         },
       ],
     },
+    limit,
+    offset,
   });
-  return books;
-};
-
-export const searchBookByTitle = async (keyword) => {
-  const books = await db.Book.findAll({
-    where: {
-      [Op.or]: [
-        {
-          title: {
-            [Op.iLike]: `%${keyword}%`,
-          },
-        },
-      ],
-    },
-  });
-  return books;
-};
-
-export const searchBookByGenre = async (keyword) => {
-  const books = await db.Book.findAll({
-    where: {
-      [Op.or]: [
-        {
-          genre: {
-            [Op.iLike]: `%${keyword}%`,
-          },
-        },
-      ],
-    },
-  });
-  return books;
-};
-
-export const searchByTag = async (keyword) => {
-  const tagsListToString = Sequelize.fn('lower', Sequelize.fn('array_to_string', Sequelize.col('tagsList'), '|'));
-  const books = await db.Books.findAll({ where: Sequelize.where(tagsListToString, { [Op.iLike]: `%${keyword.toLowerCase()}%` }) });
   return books;
 };

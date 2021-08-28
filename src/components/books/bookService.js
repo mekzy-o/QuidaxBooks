@@ -15,27 +15,9 @@ export const getSingleBookDetailService = async (id) => {
   return bookDetail;
 };
 
-export const customSearchBooksService = async (keyword, filter) => {
-  const searchedBooksByAuthor = await Book.searchBookByAuthor(keyword);
-  const searchedBookByTitle = await Book.searchBookByTitle(keyword);
-  const searchBookByTag = await Book.searchByTag(keyword);
-  const searchBookByGenre = await Book.searchByTag(keyword);
-  let searchResult;
-  switch (filter) {
-    case 'title':
-      searchResult = searchedBookByTitle;
-      break;
-    case 'author':
-      searchResult = searchedBooksByAuthor;
-      break;
-    case 'tags':
-      searchResult = searchBookByTag;
-      break;
-    case 'genre':
-      searchResult = searchBookByGenre;
-      break;
-    default:
-      searchResult = [];
-  }
-  return searchResult;
+export const customSearchBooksService = async (keyword, filter, page, size) => {
+  const { limit, offset } = getPagination(page, size, true);
+  const searchResults = await Book.searchBookByFilter(keyword, filter, limit, offset);
+  const results = getPagingData(searchResults, page, limit);
+  return results.books;
 };

@@ -17,6 +17,11 @@ export const registerUser = async (req, res, next) => {
 export const loginUser = async (req, res, next) => {
   try {
     const data = await loginUserService(req.body);
+    const { session } = req;
+    const { id, email } = data;
+    session.userId = id;
+    session.email = email;
+    session.cart = JSON.stringify({});
     return Response.successResponse(
       res,
       'You have successfully logged in',
