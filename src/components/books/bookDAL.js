@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import { Op, Sequelize } from 'sequelize';
+import { Op } from 'sequelize';
 import db from '../../database/models';
 
 export const getFeaturedBooks = async ({ limit, offset }) => {
@@ -9,6 +9,20 @@ export const getFeaturedBooks = async ({ limit, offset }) => {
 
 export const getSingleBook = async (slug) => {
   const book = await db.Book.findAll({ where: { slug } });
+  return book;
+};
+
+export const updateBookLike = async (slug, count) => {
+  const getBook = await getSingleBook(slug);
+  const book = await db.Book.update(
+    {
+      likeCount: (getBook[0].dataValues.likeCount + (count)),
+    },
+    {
+      where: { slug },
+      returning: true,
+    },
+  );
   return book;
 };
 

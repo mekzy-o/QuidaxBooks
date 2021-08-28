@@ -17,8 +17,8 @@ export const getUserCartItem = async (req, res, next) => {
 
 export const addToCartItem = async (req, res, next) => {
   try {
-    const { id } = req.params;
-    const data = await addCartItem(req, id);
+    const { slug } = req.params;
+    const data = await addCartItem(req, slug);
     return Response.successResponse(
       res,
       'cart item added successfully!',

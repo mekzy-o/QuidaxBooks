@@ -10,7 +10,7 @@ export const rateBook = async (req, rate, slug) => {
   if (!checkBook.length) {
     throw Response.applicationError('Book you want to rate does not exist');
   }
-  const checkUser = await getUserRating(user);
+  const checkUser = await getUserRating(user, slug);
   if (checkUser.length) {
     throw Response.applicationError('You already rated this book');
   }

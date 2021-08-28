@@ -1,6 +1,6 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => queryInterface.sequelize.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp";')
-    .then(() => queryInterface.createTable('Rates', {
+    .then(() => queryInterface.createTable('Likes', {
       id: {
         allowNull: false,
         primaryKey: true,
@@ -27,21 +27,19 @@ module.exports = {
           key: 'slug',
         },
       },
-      ratings: {
+      like: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.BOOLEAN,
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.NOW,
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.NOW,
       },
     })),
 
-  down: (queryInterface, Sequelize) => queryInterface.dropTable('Rates'),
+  down: (queryInterface, Sequelize) => queryInterface.dropTable('Likes'),
 };

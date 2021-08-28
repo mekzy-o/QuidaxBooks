@@ -6,8 +6,8 @@ export const addRating = async (data) => {
   return rate;
 };
 
-export const getUserRating = async (id) => {
-  const rate = await db.Rate.findAll({ where: { userId: id } });
+export const getUserRating = async (id, slug) => {
+  const rate = await db.Rate.findAll({ where: { userId: id, bookSlug: slug } });
   return rate;
 };
 

@@ -62,6 +62,14 @@ module.exports = {
       genre: {
         type: Sequelize.STRING,
       },
+      ratings: {
+        type: Sequelize.DECIMAL,
+        defaultValue: 0,
+      },
+      likeCount: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

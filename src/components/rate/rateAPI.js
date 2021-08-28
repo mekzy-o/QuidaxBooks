@@ -1,9 +1,10 @@
 import { Router } from 'express';
 import { addRating, getAverageRating } from './rateController';
+import Session from '../../libraries/sessionHelper';
 
 const router = Router();
 
-router.post('/:slug', addRating);
-router.get('/:slug', getAverageRating);
+router.post('/:slug', Session.sessionCheck, addRating);
+router.get('/:slug', Session.sessionCheck, getAverageRating);
 
 export default router;

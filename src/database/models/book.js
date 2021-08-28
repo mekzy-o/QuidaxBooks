@@ -63,11 +63,18 @@ module.exports = (sequelize, DataTypes) => {
       genre: {
         type: DataTypes.STRING,
       },
+      ratings: {
+        type: DataTypes.DECIMAL,
+      },
+      likeCount: {
+        type: DataTypes.INTEGER,
+      },
     },
     {},
   );
   Book.associate = (models) => {
     Book.hasMany(models.Rate, { foreignKey: 'bookSlug', as: 'bookRatings' });
+    Book.hasMany(models.Like, { foreignKey: 'bookSlug', as: 'likes' });
   };
   return Book;
 };

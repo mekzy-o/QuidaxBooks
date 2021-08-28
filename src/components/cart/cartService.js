@@ -12,8 +12,8 @@ export const getCartItem = async (req) => {
   return { ...cartItems, subTotal };
 };
 
-export const addCartItem = async (req, bookId) => {
-  const book = await bookServices.getSingleBookDetailService(bookId);
+export const addCartItem = async (req, slug) => {
+  const book = await bookServices.getSingleBookDetailService(slug);
   if (!book.length) {
     throw Response.applicationError('Book not found');
   }
@@ -29,23 +29,23 @@ export const addCartItem = async (req, bookId) => {
     req.session.cart = {
       ...req.session.cart,
       [userId]: {
-        [bookId]: {
+        [slug]: {
           title, price: amount, thumbnail: imgUrl, count: 1, total: `${amount}`,
         },
       },
     };
     return req.session.cart[userId];
   }
-  if (!getUserCartObject[bookId]) {
+  if (!getUserCartObject[slug]) {
     req.session.cart[userId] = {
       ...req.session.cart[userId],
-      [bookId]: {
+      [slug]: {
         title, price: amount, thumbnail: imgUrl, count: 1, total: `${amount}`,
       },
     };
     return req.session.cart[userId];
   }
-  getUserCartObject[bookId].count++;
-  getUserCartObject[bookId].total = amount * getUserCartObject[bookId].count;
+  getUserCartObject[slug].count++;
+  getUserCartObject[slug].total = amount * getUserCartObject[slug].count;
   return getUserCartObject;
 };

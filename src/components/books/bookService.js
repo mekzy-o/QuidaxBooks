@@ -14,6 +14,10 @@ export const getSingleBookDetailService = async (slug) => {
   const bookDetail = await Book.getSingleBook(slug);
   return bookDetail;
 };
+export const updateBookLikeCount = async (slug, count) => {
+  const result = await Book.updateBookLike(slug, count);
+  return result;
+};
 
 export const customSearchBooksService = async (keyword, filter, page, size) => {
   const { limit, offset } = getPagination(page, size, true);
