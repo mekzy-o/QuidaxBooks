@@ -27,5 +27,5 @@ module.exports = {
         defaultValue: Sequelize.NOW,
       },
     })),
-  down: (queryInterface, Sequelize) => queryInterface.dropTable('Users'),
+  down: (queryInterface, _Sequelize) => queryInterface.dropTable('Users'),
 };
