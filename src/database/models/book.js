@@ -63,9 +63,6 @@ module.exports = (sequelize, DataTypes) => {
       genre: {
         type: DataTypes.STRING,
       },
-      ratings: {
-        type: DataTypes.DECIMAL,
-      },
       likeCount: {
         type: DataTypes.INTEGER,
       },

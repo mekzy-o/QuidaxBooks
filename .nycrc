@@ -1,8 +1,7 @@
 {
   "exclude": [
-    "src/config/sequelize.js",
-    "src/models/index.js",
-    "src/validators/**/*",
-    "test/**/*"
+    "src/database/config/index.js",
+    "src/database/models/index.js",
+    "node_modules"
   ]
 }

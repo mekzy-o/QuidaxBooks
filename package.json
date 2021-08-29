@@ -9,9 +9,9 @@
     "db:migrate:undo": "sequelize db:migrate:undo:all",
     "db:reset": "npm run db:migrate:undo && npm run db:migrate",
     "db:seed": "sequelize db:seed:all",
-    "pretest": "NODE_ENV=test npm run db:migrate:undo && NODE_ENV=test npm run db:migrate",
+    "pretest": "NODE_ENV=test npm run db:migrate:undo && NODE_ENV=test npm run db:migrate && NODE_ENV=test npm run db:seed",
     "posttest": "NODE_ENV=test npm run db:migrate:undo",
-    "test": "NODE_ENV=test nyc mocha -r esm src/tests && src/**/*.spec.js"
+    "test": "NODE_ENV=test nyc mocha -r esm src/**/*.spec.js src/**/**/*.spec.js"
   },
   "dependencies": {
     "argon2": "^0.28.2",

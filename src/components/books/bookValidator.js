@@ -12,7 +12,7 @@ export default {
     query('filter')
       .not()
       .isEmpty({ ignore_whitespace: true })
-      .withMessage('search filter cannot be empty, You can filter by author, title etc')
+      .withMessage('search filter cannot be empty, You can filter by author, title, genre etc')
       .isString()
       .withMessage('search filter must be a text or string'),
     (req, _res, next) => {

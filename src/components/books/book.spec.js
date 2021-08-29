@@ -55,7 +55,7 @@ describe('Book Routes', () => {
         response.statusCode.should.equal(400);
         response.body.success.should.equal(false);
         response.body.should.have.property('error');
-        response.body.message.should.equal('search filter cannot be empty, You can filter by author, title etc');
+        response.body.message.should.equal('search filter cannot be empty, You can filter by author, title, genre etc');
       });
     });
   });

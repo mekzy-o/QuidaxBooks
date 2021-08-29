@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import { config } from 'dotenv';
 import { expect } from 'chai';
 import request from 'supertest';
