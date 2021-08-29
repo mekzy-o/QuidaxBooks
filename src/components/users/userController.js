@@ -22,7 +22,7 @@ export const loginUser = async (req, res, next) => {
     const { id, email } = data;
     session.userId = id;
     session.email = email;
-    session.cart = JSON.stringify({});
+    session.cart = {};
     return Response.successResponse(
       res,
       'You have successfully logged in',

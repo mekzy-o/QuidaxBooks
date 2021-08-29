@@ -1,6 +1,3 @@
-/* eslint-disable no-plusplus */
-/* eslint-disable no-unused-vars */
-/* eslint-disable import/prefer-default-export */
 import { bookServices } from '../index';
 import Response from '../../libraries/response';
 import { calculateSubTotal } from '../../utils/calculateCartSubTotal';
@@ -8,6 +5,9 @@ import { calculateSubTotal } from '../../utils/calculateCartSubTotal';
 export const getCartItem = async (req) => {
   const { userId } = req.session;
   const cartItems = req.session.cart[userId];
+  if (!cartItems) {
+    return {};
+  }
   const subTotal = calculateSubTotal(cartItems);
   return { ...cartItems, subTotal };
 };

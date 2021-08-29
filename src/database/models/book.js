@@ -49,7 +49,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
       },
       amount: {
-        type: DataTypes.DECIMAL(20, 4).UNSIGNED,
+        type: DataTypes.DECIMAL(20, 2).UNSIGNED,
         allowNull: false,
       },
       featured: {

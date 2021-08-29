@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import Response from '../../libraries/response';
 import { getFeaturedBooksService, getSingleBookDetailService, customSearchBooksService } from './bookService';
 

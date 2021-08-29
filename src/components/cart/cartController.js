@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { getCartItem, addCartItem } from './cartService';
 import Response from '../../libraries/response';
 
@@ -7,7 +6,7 @@ export const getUserCartItem = async (req, res, next) => {
     const data = await getCartItem(req);
     return Response.successResponse(
       res,
-      'cart item fetched successfully!',
+      data.subTotal ? 'cart item fetched successfully!' : 'Cart is Empty!',
       data,
     );
   } catch (error) {

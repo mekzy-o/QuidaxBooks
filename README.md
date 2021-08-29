@@ -23,7 +23,7 @@ This is a RESTful API for a simple ecommerce service. Part of an online assessme
 ### Project Structure
 
 ```bash
-├── .github
+├── assets
 ├── src
 ├── .env.example
 ├── .eslintrc
@@ -75,9 +75,6 @@ This project uses [Express.js](https://expressjs.com/) v4.16. It has the followi
 - ESLint & Prettier
 - Redis
 
-### Third party Services
-
-- Github Actions for Continuous Integration and Deployment.
 
 #### _Prerequisites_
 
@@ -123,6 +120,9 @@ npm run db:migrate
 ```sh
 npm run start:dev
 ```
+
+- You should also run the redis server on your terminal
+
 
 - Other `npm` scripts are also available for handling database migration and database seeding:
   - `npm run db:migrate` runs script that is responsible for creating tables and their columns in the database,
