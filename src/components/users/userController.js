@@ -8,6 +8,7 @@ export const registerUser = async (req, res, next) => {
       res,
       'You have successfully registered with our platform.',
       data,
+      201,
     );
   } catch (error) {
     return next(error);

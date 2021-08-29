@@ -2,8 +2,8 @@
 /* eslint-disable no-param-reassign */
 import * as yup from 'yup';
 
-const successResponse = (res, message, data = null) => res
-  .status(200).send({
+const successResponse = (res, message, data = null, statusCode = null) => res
+  .status(statusCode || 200).send({
     success: true,
     message,
     data,

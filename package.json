@@ -3,7 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "DEBUG=development && nodemon -r esm src/index.js"
+    "start": "DEBUG=development && nodemon -r esm src/index.js",
+    "migrate": "npx sequelize-cli db:migrate",
+    "seed": "npx sequelize-cli db:seed:all",
+    "drop": "npx sequelize-cli db:drop",
+    "create": "npx sequelize-cli db:create",
+    "undo:seed": "npx sequelize-cli db:seed:undo:all",
+    "test": "export NODE_ENV=test && npm run drop && npm run create && npm run migrate && npm run seed && mocha --no-timeout -r esm ./src/**/**/*.spec.js --exit"
   },
   "dependencies": {
     "argon2": "^0.28.2",
@@ -30,12 +36,15 @@
     "nodemon": "^2.0.12"
   },
   "devDependencies": {
+    "chai": "^4.3.4",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-prettier": "^3.4.1",
+    "mocha": "^9.1.1",
     "prettier": "^2.3.2",
-    "sequelize-cli": "^6.2.0"
+    "sequelize-cli": "^6.2.0",
+    "supertest": "^6.1.6"
   }
 }
