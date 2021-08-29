@@ -36,6 +36,9 @@ This is a RESTful API for a simple ecommerce service. Part of an online assessme
 └── README.md
 ```
 
+### Project Database Architecture
+![Untitled](https://user-images.githubusercontent.com/40548599/131268589-443e0b34-3415-4e29-9c07-135d2ddd5b01.png)
+
 ### HTTP Response Codes
 
 Each response will be returned with one of the following HTTP status codes:
