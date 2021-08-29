@@ -9,7 +9,7 @@
     "drop": "npx sequelize-cli db:drop",
     "create": "npx sequelize-cli db:create",
     "undo:seed": "npx sequelize-cli db:seed:undo:all",
-    "test": "export NODE_ENV=test && npm run drop && npm run create && npm run migrate && npm run seed && mocha --no-timeout -r esm ./src/**/**/*.spec.js --exit"
+    "test": "export NODE_ENV=test && yarn run drop && yarn run create && yarn run migrate && yarn run seed && mocha --no-timeout -r esm ./src/**/**/*.spec.js --exit"
   },
   "dependencies": {
     "argon2": "^0.28.2",
@@ -42,9 +42,15 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-prettier": "^3.4.1",
+    "husky": "^7.0.2",
     "mocha": "^9.1.1",
     "prettier": "^2.3.2",
     "sequelize-cli": "^6.2.0",
     "supertest": "^6.1.6"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run sync:env"
+    }
   }
 }
