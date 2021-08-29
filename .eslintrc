@@ -14,5 +14,13 @@
       "ecmaVersion": 2018
     },
     "rules": {
+      "camelcase": "off",
+      "consistent-return": "off",
+      "no-undef":"off",
+      "global-require": "off",
+      "import/no-dynamic-require": "off",
+      "no-param-reassign": "off",
+      "object-curly-newline": "off"
+      
     }
 }

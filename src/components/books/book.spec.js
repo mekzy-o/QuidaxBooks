@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import { should } from 'chai';
 import request from 'supertest';
 import app from '../../app';
