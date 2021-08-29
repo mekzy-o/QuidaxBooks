@@ -3,7 +3,6 @@ import argon2 from 'argon2';
 import Response from '../../libraries/response';
 import * as User from './userDAL';
 import { filterOutPassword } from '../../utils/filterOutPassword';
-import userValidator from './userValidator';
 
 /**
   * @function registerUserService
@@ -12,9 +11,8 @@ import userValidator from './userValidator';
   * @returns {object} user object representing newly created user
   */
 export const registerUserService = async (body) => {
-  await userValidator.validate(body, { strict: true });
   const { email, password } = body;
-  const foundUser = await User.getUserByEmail(email);
+  const foundUser = await User.getUserByEmail(email.toLowerCase());
 
   if (foundUser) {
     throw Response.applicationError('User with this email already exists');
@@ -36,9 +34,8 @@ export const registerUserService = async (body) => {
   * @returns {object} user object
   */
 export const loginUserService = async (body) => {
-  await userValidator.validate(body, { strict: true });
   const { email, password } = body;
-  const foundUser = await User.getUserByEmail(email);
+  const foundUser = await User.getUserByEmail(email.toLowerCase());
   if (!foundUser) {
     throw Response.applicationError('User with this email does not exist');
   }

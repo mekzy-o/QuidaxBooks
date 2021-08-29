@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
     'User',
@@ -23,5 +24,8 @@ module.exports = (sequelize, DataTypes) => {
       onUpdate: 'CASCADE',
     });
   };
+  User.beforeCreate((user) => {
+    user.email = user.email.toLowerCase();
+  });
   return User;
 };
