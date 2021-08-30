@@ -2,6 +2,16 @@
 import Response from '../../libraries/response';
 import { likeOrUnlikeBookService } from './likeServices';
 
+/**
+   * @description controller for liking and unliking a book
+   * @method addorRemoveLike
+   *
+   * @param {Object} req
+   * @param {Object} res
+   * @param {@function} next
+   *
+   * @returns {Object}
+   */
 export const addorRemoveLike = async (req, res, next) => {
   try {
     const { slug } = req.params;

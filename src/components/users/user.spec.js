@@ -65,6 +65,28 @@ describe('Authentication Routes', () => {
       response.body.success.should.eql(false);
       response.body.message.should.equal('User with this email does not exist');
     });
+    it('should throw an error when password is not given', async () => {
+      const response = await request(app)
+        .post(`${BASE_ROUTE}/signin`)
+        .send({
+          email: 'emekaof@chekkit.com',
+        });
+
+      response.statusCode.should.equal(400);
+      response.body.success.should.eql(false);
+      response.body.message.should.equal('Password is required');
+    });
+    it('should throw an error when email is not given', async () => {
+      const response = await request(app)
+        .post(`${BASE_ROUTE}/signin`)
+        .send({
+          password: 'Maths@10203',
+        });
+
+      response.statusCode.should.equal(400);
+      response.body.success.should.eql(false);
+      response.body.message.should.equal('Email is required');
+    });
     it('should login in user successful', async () => {
       const response = await request(app)
         .post(`${BASE_ROUTE}/signin`)

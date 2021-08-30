@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "transpile-test": "src --out-dir build",
     "start": "node -r esm src/index.js",
     "start:dev": "DEBUG=development && nodemon -r esm src/index.js",
     "db:migrate": "sequelize db:migrate",
@@ -11,7 +12,7 @@
     "db:seed": "sequelize db:seed:all",
     "pretest": "NODE_ENV=test npm run db:migrate:undo && NODE_ENV=test npm run db:migrate && NODE_ENV=test npm run db:seed",
     "posttest": "NODE_ENV=test npm run db:migrate:undo",
-    "test": "NODE_ENV=test nyc mocha -r esm src/**/*.spec.js src/**/**/*.spec.js"
+    "test": "NODE_ENV=test mocha -r esm src/**/*.spec.js src/**/**/*.spec.js"
   },
   "dependencies": {
     "argon2": "^0.28.2",
@@ -26,7 +27,6 @@
     "express-session": "^1.17.2",
     "express-validator": "^6.12.1",
     "http-errors": "~1.6.3",
-    "morgan": "~1.9.1",
     "pg": "^8.7.1",
     "redis": "^3.1.2",
     "sequelize": "^6.6.5",
@@ -46,7 +46,6 @@
     "eslint-plugin-prettier": "^3.4.1",
     "husky": "^7.0.2",
     "mocha": "^9.1.1",
-    "nyc": "^15.1.0",
     "prettier": "^2.3.2",
     "sequelize-cli": "^6.2.0",
     "supertest": "^6.1.6"

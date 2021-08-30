@@ -1,6 +1,16 @@
 import Response from '../../libraries/response';
 import { getFeaturedBooksService, getSingleBookDetailService, customSearchBooksService } from './bookService';
 
+/**
+   * @description controller for getting featured books
+   * @method getFeaturedBooks
+   *
+   * @param {Object} req
+   * @param {Object} res
+   * @param {@function} next
+   *
+   * @returns {Object}
+   */
 export const getFeaturedBooks = async (req, res, next) => {
   const { page, size } = req.query;
   try {
@@ -15,6 +25,16 @@ export const getFeaturedBooks = async (req, res, next) => {
   }
 };
 
+/**
+   * @description controller for getting single book
+   * @method getSingleBookDetail
+   *
+   * @param {Object} req
+   * @param {Object} res
+   * @param {@Object} next
+   *
+   * @returns {@function}
+   */
 export const getSingleBookDetail = async (req, res, next) => {
   const { slug } = req.params;
   try {
@@ -29,6 +49,16 @@ export const getSingleBookDetail = async (req, res, next) => {
   }
 };
 
+/**
+   * @description controller for searching for books
+   * @method searchBooks
+   *
+   * @param {Object} req
+   * @param {Object} res
+   * @param {@function} next
+   *
+   * @returns {Object}
+   */
 export const searchBooks = async (req, res, next) => {
   const {
     query, filter, page, size,

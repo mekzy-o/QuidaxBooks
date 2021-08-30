@@ -2,6 +2,14 @@ import { bookServices } from '../index';
 import Response from '../../libraries/response';
 import { calculateSubTotal } from '../../utils/calculateCartSubTotal';
 
+/**
+   * @description service for getting all cart items with subtotal
+   * @method getCartItem
+   *
+   * @param {Object} req
+   *
+   * @returns {Object}
+   */
 export const getCartItem = async (req) => {
   const { userId } = req.session;
   const cartItems = req.session.cart[userId];
@@ -12,6 +20,15 @@ export const getCartItem = async (req) => {
   return { ...cartItems, subTotal };
 };
 
+/**
+   * @description service for adding cart items
+   * @method addCartItem
+   *
+   * @param {Object} req
+   * @param {Object} slug
+   *
+   * @returns {Object}
+   */
 export const addCartItem = async (req, slug) => {
   const book = await bookServices.getSingleBookDetailService(slug);
   if (!book.length) {

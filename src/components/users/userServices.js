@@ -5,9 +5,11 @@ import * as User from './userDAL';
 import { filterOutPassword } from '../../utils/filterOutPassword';
 
 /**
-  * @function registerUserService
-  * @description creates a new user
-  * @param {*} data represent user details
+  * @description service to create a new user
+  * @method registerUserService
+  *
+  * @param {object} body represent user details
+  *
   * @returns {object} user object representing newly created user
   */
 export const registerUserService = async (body) => {
@@ -28,10 +30,10 @@ export const registerUserService = async (body) => {
 };
 
 /**
-  * @function loginUserService
-  * @description logs in a user service
-  * @param {*} data represent user details
-  * @returns {object} user object
+  * @description logging in a user service
+  * @param {object} body
+  *
+  * @returns {object}
   */
 export const loginUserService = async (body) => {
   const { email, password } = body;

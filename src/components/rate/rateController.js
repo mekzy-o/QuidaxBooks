@@ -1,7 +1,17 @@
 /* eslint-disable import/prefer-default-export */
 import Response from '../../libraries/response';
-import { rateBook, getBookAverageRating } from './rateServices';
+import { rateBook } from './rateServices';
 
+/**
+   * @description controller for rating a book
+   * @method addRating
+   *
+   * @param {Object} req
+   * @param {Object} res
+   * @param {@function} next
+   *
+   * @returns {Object}
+   */
 export const addRating = async (req, res, next) => {
   try {
     const { rate } = req.body;
@@ -17,6 +27,16 @@ export const addRating = async (req, res, next) => {
   }
 };
 
+/**
+   * @description controller for getting average rating of a book
+   * @method getAverageRating
+   *
+   * @param {Object} req
+   * @param {Object} res
+   * @param {@function} next
+   *
+   * @returns {Object}
+   */
 export const getAverageRating = async (req, res, next) => {
   try {
     const { slug } = req.params;

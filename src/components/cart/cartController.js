@@ -1,6 +1,16 @@
 import { getCartItem, addCartItem } from './cartService';
 import Response from '../../libraries/response';
 
+/**
+   * @description controller for getting cartItem
+   * @method getUserCartItem
+   *
+   * @param {Object} req
+   * @param {Object} res
+   * @param {@function} next
+   *
+   * @returns {Object}
+   */
 export const getUserCartItem = async (req, res, next) => {
   try {
     const data = await getCartItem(req);
@@ -14,6 +24,16 @@ export const getUserCartItem = async (req, res, next) => {
   }
 };
 
+/**
+   * @description controller for addingItem to cart
+   * @method addCartItem
+   *
+   * @param {Object} req
+   * @param {Object} res
+   * @param {@function} next
+   *
+   * @returns {Object}
+   */
 export const addToCartItem = async (req, res, next) => {
   try {
     const { slug } = req.params;

@@ -8,9 +8,6 @@ import routes from './components';
 
 require('express-async-errors');
 
-// I'm using "require" to remove morgan warning error when using import and esm
-const morgan = require('morgan');
-
 const app = express();
 const RedisStore = connectRedis(session);
 const redisClient = redis.createClient();
@@ -22,7 +19,6 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use(morgan('combined'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
@@ -44,10 +40,9 @@ app.use(
   }),
 );
 
-// TODO: remove comments
 app.use((req, _res, next) => {
   if (!req.session) {
-    return next(new Error('oh no')); // handle error
+    return next(new Error('Connection failed!, Please try again')); // handle error
   }
   next(); // otherwise continue
 });

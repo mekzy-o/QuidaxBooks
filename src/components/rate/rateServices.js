@@ -4,6 +4,16 @@ import Response from '../../libraries/response';
 import { addRating, getBookRating, getUserRating } from './rateDAL';
 import { roundToOneDecimal } from '../../utils/roundToOneDecimal';
 
+/**
+   * @description service for rating books
+   * @method rateBook
+   *
+   * @param {Object} req
+   * @param {string} rate
+   * @param {string} next
+   *
+   * @returns {Object}
+   */
 export const rateBook = async (req, rate, slug) => {
   const user = req.session.userId;
   const checkBook = await bookServices.getSingleBookDetailService(slug);
@@ -17,15 +27,7 @@ export const rateBook = async (req, rate, slug) => {
   const data = {
     userId: user, bookSlug: slug, ratings: rate,
   };
-  const result = await addRating(data);
-  return result;
-};
-
-export const getBookAverageRating = async (slug) => {
-  const checkBook = await bookServices.getSingleBookDetailService(slug);
-  if (!checkBook.length) {
-    throw Response.applicationError('Book you want does not exist');
-  }
+  await addRating(data);
   const bookratings = await getBookRating(slug);
   const averageRatings = roundToOneDecimal((bookratings
     .reduce((acc, current) => Number(current.ratings)
