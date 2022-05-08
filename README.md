@@ -15,8 +15,7 @@
 
 # Introduction
 
-This is a RESTful API for a simple ecommerce service. Part of an online assessment for [Quidax](https://www.quidax.com/) Senior Backend Engineer Position.
-
+This is a RESTful API for a simple ecommerce service. 
 ### **Style guide**
 
 [Airbnb ](https://github.com/airbnb/javascript)(Javascript style guide)
